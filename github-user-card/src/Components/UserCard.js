@@ -16,7 +16,9 @@ const Card = styled.div`
   justify-content: center;
   flex-direction: column;
   flex-wrap: nowrap;
-  border: 1px solid red;
+  background: #59405e;
+  box-shadow: 10px 20px #474447;
+
   margin: 2%;
 `;
 
@@ -30,6 +32,8 @@ const Image = styled.img`
 
 const UserCard = props => {
   console.log("this is userCard props", props);
+
+  const Click = {};
 
   return (
     <CardBox>
