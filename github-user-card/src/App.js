@@ -1,24 +1,47 @@
 import React from "react";
 import "./App.css";
+import axios from "axios";
+import UserCard from "./Components/UserCard";
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      uesrs: []
+      users: [],
+      followers: []
     };
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/users/ShawnBatson")
-      .then(res => res.json())
-      .then(users => this.setState({ users: users }))
-      .catch(err => console.lot("you have encountered an error", err));
-    console.log("fetched users", res.data);
+    console.log("Component Did Mount!");
+    axios
+      .get("https://api.github.com/users/ShawnBatson")
+      .then(res => {
+        this.setState({ user: res.data });
+        console.log("first fetch invoked", res.data);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .get("https://api.github.com/users/ShawnBatson/followers")
+      .then(res => {
+        this.setState({ followers: res.data });
+        console.log("second fetch invoked", res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
-    return <div className="App">{this.users}</div>;
+    console.log("Render Invoked");
+    return (
+      <div className="App">
+        <UserCard />
+        <h1>{this.state.users.login} follower cards</h1>
+        <UserCard followers={this.state.followers} user={this.state.users} />
+      </div>
+    );
   }
 }
 
