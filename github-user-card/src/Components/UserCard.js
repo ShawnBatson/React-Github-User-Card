@@ -1,21 +1,49 @@
 import React from "react";
 import "../App.css";
+import styled from "styled-components";
+
+const CardBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  passing: 2%;
+  border: 1px solid black;
+`;
+const Card = styled.div`
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  border: 1px solid red;
+  margin: 2%;
+`;
+
+const Image = styled.img`
+  display: flex;
+  margin-left: 20%;
+  width: 60%;
+  align-items: center;
+  border: 1px solid green;
+`;
 
 const UserCard = props => {
   console.log("this is userCard props", props);
 
   return (
-    <div>
-      <h2>Followers</h2>
+    <CardBox>
       {props.followers.map(follower => {
         return (
-          <div className="follower-card">
-            <img src={follower.avatar_url} />
+          <Card className="follower-card" key={follower.id}>
             <h4>{follower.login}</h4>
-          </div>
+            <Image src={follower.avatar_url} />
+            <p>words go here</p>
+            <h4>{follower.html_url}</h4>
+          </Card>
         );
       })}
-    </div>
+    </CardBox>
   );
 };
 

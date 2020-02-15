@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import UserCard from "./Components/UserCard";
+import styled from "styled-components";
 
 class App extends React.Component {
   state = {
@@ -31,10 +32,11 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("Render Invoked");
+    console.log("render");
     return (
       <div className="App">
-        <h1>{this.state.users.login} follower cards</h1>
+        <h1>Shawn Batson's GitHub Followers!</h1>
+        <h2>Followers</h2>
         <UserCard followers={this.state.followers} user={this.state.users} />
       </div>
     );
