@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 const UserCard = props => {
-  console.log(props);
+  console.log("this is userCard props", props);
 
   return (
     <div>

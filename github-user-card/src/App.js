@@ -4,13 +4,10 @@ import axios from "axios";
 import UserCard from "./Components/UserCard";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      followers: []
-    };
-  }
+  state = {
+    users: [],
+    followers: []
+  };
 
   componentDidMount() {
     console.log("Component Did Mount!");
@@ -37,7 +34,6 @@ class App extends React.Component {
     console.log("Render Invoked");
     return (
       <div className="App">
-        <UserCard />
         <h1>{this.state.users.login} follower cards</h1>
         <UserCard followers={this.state.followers} user={this.state.users} />
       </div>
